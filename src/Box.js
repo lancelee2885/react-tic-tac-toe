@@ -19,10 +19,12 @@ const Box = function ({row, col, turn, mark}) {
 
   function toggle() {
     mark(turn, row, col);
-    if (turn === 'p1'){
-      setCircleOrCross('X');
-    } else {
-      setCircleOrCross('O')
+    if (!drop) {
+      if (turn === 'p1'){
+        setCircleOrCross('X');
+      } else {
+        setCircleOrCross('O')
+      }
     }
     setDrop(true);
   }
