@@ -14,7 +14,7 @@ import React, { useState } from 'react';
  *  - circleOrCross: depends on the player, determine whether to drop an O or X
  *  - drop: indicates whether or not the mark should be dropped
  */
-const Box = function ({ gameBoard, row, col, turn, mark, won }) {
+const Box = function ({ gameBoard, row, col, turn, mark, won, checkDraw }) {
 
   const [drop, setDrop] = useState(false);
 
