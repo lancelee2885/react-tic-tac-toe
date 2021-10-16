@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  display: grid;
 
 }
 
@@ -47,9 +46,17 @@
 
 .gameBoard {
   border-spacing: 5px 5px;
+  align-self: center;
+  justify-self: center;
 }
 
 .game {
-  align-self: center;
+  display: grid;
+}
+
+button {
+  width: 100px;
+  height: 20px;
   justify-self: center;
+  margin-top: 20px;
 }

@@ -1,37 +1,32 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 /** Box: single box in the table
  * 
  * Props: 
+ *  - gameBoard: Array of arrays keeping track of current board
  *  - row: indicates which row it is
  *  - col: indicates which col it is
  *  - turn: track who's turn it is
  *  - mark: function rec'd from Game to update gameBoard
+ *  - won: keep tracking if the game has been won by one of players
  * 
  * States:
  *  - circleOrCross: depends on the player, determine whether to drop an O or X
  *  - drop: indicates whether or not the mark should be dropped
  */
-const Box = function ({row, col, turn, mark}) {
-  
-  const [circleOrCross, setCircleOrCross] = useState();
+const Box = function ({ gameBoard, row, col, turn, mark, won }) {
+
   const [drop, setDrop] = useState(false);
 
   function toggle() {
+    if (won) return null;
     mark(turn, row, col);
-    if (!drop) {
-      if (turn === 'p1'){
-        setCircleOrCross('X');
-      } else {
-        setCircleOrCross('O')
-      }
-    }
     setDrop(true);
   }
 
   return (
     <td className={`${row}, ${col}`} key={`${row}, ${col}`} onClick={() => toggle()}>
-      {drop ? circleOrCross : null}
+      {drop ? gameBoard[row][col] : null}
     </td>
   )
 }
